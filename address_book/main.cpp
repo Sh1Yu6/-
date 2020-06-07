@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-06 21:13:37
-# Last Modified: 2020-06-06 22:40:35
+# Last Modified: 2020-06-07 19:44:10
 #***********************************************/
 #include <iostream>
 #include <string>
@@ -38,13 +38,13 @@ void displayContacts(const AddressBook& theAddrBook);
 
 void deleteContacts(AddressBook& theAddrBook);
 
-
-Contacts& searchContacts(const AddressBook& theAddrBook);
+void searchContacts(const AddressBook& theAddrBook);
 
 void changeContacts(AddressBook& theAddrBook);
 
 void emptyAddressBook(AddressBook& theAddrBook);
 
+void displayPerson(const Contacts& person);
 
 
 int main(int argc, char *argv[])
@@ -65,13 +65,13 @@ int main(int argc, char *argv[])
                 deleteContacts(myAddressBook);
                 break;
             case 4:             // Search a contacts
-                //searchContacts(myAddressBook);
+                searchContacts(myAddressBook);
                 break;
             case 5:             // Change a contacts
-                //changeContacts(myAddressBook);
+                changeContacts(myAddressBook);
                 break;
             case 6:             // Empty the address book
-                //emptyAddressBook(myAddressBook);
+                emptyAddressBook(myAddressBook);
                 break;
             case 0:             // Quite the address book
                 cout << "Thank you" << endl;
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
 int showMenu()
 {
     int select = 0; 
-    cout << "Address book" << endl;
+    cout << "\nAddress book" << endl;
     cout << "---------------------" << endl; 
     cout << "1) Add a contacts" << endl;
     cout << "2) List a contacts" << endl;
@@ -126,19 +126,15 @@ void addContacts(AddressBook& theAddrBook)
 
     theAddrBook.mContacts.push_back(person);
 
-    cout << "Add successed\n" << endl;
+    cout << "Add successed" << endl;
 }
 
 void displayContacts(const AddressBook& theAddrBook)
 {
-    int size = theAddrBook.mContacts.size();
-    for(int loopIndex = 0; loopIndex < size; ++loopIndex)
+    for(auto loopIndex = theAddrBook.mContacts.begin(); 
+            loopIndex != theAddrBook.mContacts.end(); ++loopIndex)
     {
-        cout << "name: " << theAddrBook.mContacts[loopIndex].mName << "\t";
-        cout << "sex: " << (theAddrBook.mContacts[loopIndex].mSex ? "man" : "woman") << "\t";
-        cout << "age: " << theAddrBook.mContacts[loopIndex].mAge << "\t";
-        cout << "phone number: " << theAddrBook.mContacts[loopIndex].mPhoneNumber << "\t";
-        cout << "address: " << theAddrBook.mContacts[loopIndex].mAddress << endl;
+        displayPerson(*loopIndex);
     }
 }
 
@@ -160,11 +156,77 @@ void deleteContacts(AddressBook& theAddrBook)
         }
     }
 
+
     cout << "Your address book is not " << name << endl;
 }
 
-Contacts& searchContacts(const AddressBook& theAddrBook);
+void searchContacts(const AddressBook& theAddrBook)
+{
+    cout << "Who is you want to search from your address book?" << endl;
+    cout << "Please enter the name: ";
+    string name;
+    cin >> name;
 
-void changeContacts(AddressBook& theAddrBook);
+    for(auto loopIndex = theAddrBook.mContacts.begin(); 
+            loopIndex != theAddrBook.mContacts.end(); ++loopIndex)
+    {
+        if(loopIndex->mName == name)
+        {
+            displayPerson(*loopIndex);
+            return ;
+        }
+    }
 
-void emptyAddressBook(AddressBook& theAddrBook);
+    cout << "There is not " << name << " in your address book." << endl;
+
+}
+
+void changeContacts(AddressBook& theAddrBook)
+{
+    cout << "Who is you want to change from your address book?" << endl;
+    cout << "Please enter the name: ";
+    string name;
+    cin >> name;
+
+    for(auto loopIndex = theAddrBook.mContacts.begin(); 
+            loopIndex != theAddrBook.mContacts.end(); ++loopIndex)
+    {
+        if(loopIndex->mName == name)
+        {
+            cout << "Please enter the name: ";
+            cin >> loopIndex->mName;
+
+            cout << "Please enter sex(man enter 1, women enter 2); ";
+            cin >> loopIndex->mSex;
+
+            cout << "Please enter age: ";
+            cin >> loopIndex->mAge;
+
+            cout << "Please enter phone number: ";
+            cin >> loopIndex->mPhoneNumber;
+
+            cout << "Please enter address: ";
+            getline(cin, loopIndex->mAddress);
+            getline(cin, loopIndex->mAddress);
+
+            return ;
+        }
+    }
+    cout << "There is not " << name << " in your address book." << endl;
+}
+
+void emptyAddressBook(AddressBook& theAddrBook)
+{
+    theAddrBook.mContacts.clear();
+}
+
+void displayPerson(const Contacts& person)
+{
+    cout << "name: " << person.mName << "\t";
+    cout << "sex: " << (person.mSex ? "man" : "woman") << "\t";
+    cout << "age: " << person.mAge << "\t";
+    cout << "phone number: " << person.mPhoneNumber << "\t";
+    cout << "address: " << person.mAddress << endl;
+}
+
+
