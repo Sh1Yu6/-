@@ -6,11 +6,12 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-06 21:13:37
-# Last Modified: 2020-06-07 19:44:10
+# Last Modified: 2020-06-13 20:08:51
 #***********************************************/
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdlib>
 //#include <cstdlib>
 using namespace std;
 
@@ -79,6 +80,12 @@ int main(int argc, char *argv[])
             default:
                 break;
         }
+
+        cout << "Please enter key to continue..." << endl;
+        cin.get();
+        cin.get();
+
+        system("clear");
     }
     return 0;
 }
