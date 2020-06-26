@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-25 19:51:38
-# Last Modified: 2020-06-25 22:08:43
+# Last Modified: 2020-06-26 20:10:56
 #***********************************************/
 #include "speechManager.h"
 #include "speaker.h"
@@ -16,12 +16,12 @@
 #include <functional>
 #include <iterator>
 #include <numeric>
+#include <fstream>
 using namespace std;
 
 SpeechManager::SpeechManager()
 {
     initSpeech();
-
     createSpeaker();
 }
 
@@ -90,6 +90,7 @@ void SpeechManager::createSpeaker()
 void SpeechManager::startSpeech()
 {
     srand(static_cast<unsigned int>(time(NULL)));
+    cin.get();
     speechDraw();
     speechContest();
     showScore();
@@ -99,6 +100,14 @@ void SpeechManager::startSpeech()
     speechDraw();
     speechContest();
     showScore();
+
+    saveRecord();
+
+    initSpeech();
+    createSpeaker();
+    loadRecord();
+
+    cout << "本届比赛结束\n" << endl;
 }
         
 void SpeechManager::speechDraw()
@@ -127,6 +136,8 @@ void SpeechManager::speechDraw()
     }
 
     cout << "-------------------" << endl;
+    cout << endl;
+    waitInput();
     
 }
 
@@ -206,6 +217,7 @@ void SpeechManager::speechContest()
 
     cout << "第 <<" << mIndex << ">> 轮比赛结束" << endl;
     cout << endl;
+    waitInput();
 
 }
 
@@ -231,4 +243,124 @@ void SpeechManager::showScore()
              << endl;
     }
     cout << endl;
+    waitInput();
+}
+
+void SpeechManager::saveRecord()
+{
+    ofstream ofs;
+    ofs.open("speech.csv", ios::out | ios::app);
+
+    for(auto iter = mVictory.begin(); iter != mVictory.end(); ++iter)
+    {
+        ofs << *iter << "," << mSpeaker[*iter].mScore[1] << ",";
+    }
+    ofs << endl;
+
+    ofs.close();
+
+    cout << "记录已经保存" << endl;
+    mFileIsEmpty = false;
+}
+
+void SpeechManager::loadRecord()
+{
+    ifstream ifs("speech.csv");
+
+    if(!ifs.is_open())
+    {
+        mFileIsEmpty = true;
+        cout << "文件不存在" << endl;
+        ifs.close();
+        return;
+    }
+
+    char ch;
+    ifs >> ch;
+    if(ifs.eof())
+    {
+        cout << "文件为空" << endl;
+        mFileIsEmpty = true;
+        ifs.close();
+        return;
+    }
+
+    mFileIsEmpty = false;
+
+    ifs.putback(ch);
+
+    int index = 0;
+    string data;
+    while(ifs >> data)
+    {
+        vector<string> v;
+        int pos = -1;
+        int start = 0;
+
+        while(true)
+        {
+            pos = data.find(",", start);
+            if(pos == -1)
+            {
+                break;
+            }
+            string temp = data.substr(start, pos - start);
+
+            v.push_back(temp);
+
+            start = pos + 1;
+        }
+
+        mRecord.insert(make_pair(index, v));
+        ++index;
+    }
+
+    ifs.close();
+}
+
+void SpeechManager::showRecord()
+{
+    if(mFileIsEmpty)
+    {
+        cout << "打开文件失败!" << endl;
+        return ;
+    }
+
+    for(int index = 0; index < mRecord.size(); ++index)
+    {
+        cout << "第" << index + 1 << "届:"
+             << "\n冠军: " << mRecord[index][0] << " 得分: " << mRecord[index][1]
+             << "\n亚军: " << mRecord[index][2] << " 得分: " << mRecord[index][3]
+             << "\n季军: " << mRecord[index][4] << " 得分: " << mRecord[index][5]
+             << endl;
+    }
+}
+
+void SpeechManager::waitInput()
+{
+    cout << "请按回车键继续......." << endl;
+    cin.get();
+}
+
+void SpeechManager::clearRecord()
+{
+    cout << "是否确认清空记录?(1. YES  2. NO)" << endl;
+
+    int choice = 0;
+    cin >> choice;
+
+    if(choice == 1)
+    {
+        ofstream ofs("speech.csv", ios::trunc);
+        ofs.close();
+
+        initSpeech();
+        createSpeaker();
+        mRecord.clear();
+        loadRecord();
+        
+        cout << "清空成功!" << endl;
+    }
+
+
 }

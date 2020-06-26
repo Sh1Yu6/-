@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-06 21:13:37
-# Last Modified: 2020-06-13 20:08:51
+# Last Modified: 2020-06-23 21:41:58
 #***********************************************/
 #include <iostream>
 #include <string>
@@ -204,6 +204,7 @@ void changeContacts(AddressBook& theAddrBook)
             cin >> loopIndex->mName;
 
             cout << "Please enter sex(man enter 1, women enter 2); ";
+            
             cin >> loopIndex->mSex;
 
             cout << "Please enter age: ";

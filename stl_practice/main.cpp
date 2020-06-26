@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-25 19:57:06
-# Last Modified: 2020-06-25 22:06:24
+# Last Modified: 2020-06-26 20:04:06
 #***********************************************/
 #include <iostream>
 #include "speechManager.h"
@@ -29,8 +29,10 @@ int main(int argc, char *argv[])
                 sm.startSpeech();
                 break;
             case 2:
+                sm.showRecord();
                 break;
             case 3:
+                sm.clearRecord();
                 break;
             case 0:
                 sm.exitSystem();

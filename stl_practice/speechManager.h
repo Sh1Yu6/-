@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include "speaker.h"
+#include <string>
 
 
 class SpeechManager
@@ -19,6 +20,10 @@ class SpeechManager
 
         void startSpeech();
 
+        void showRecord();
+
+        void clearRecord();
+
     private:
 
         void initSpeech();
@@ -31,6 +36,11 @@ class SpeechManager
 
         void showScore();
 
+        void saveRecord();
+
+        void loadRecord();
+
+        void waitInput();
 
 
 
@@ -41,6 +51,10 @@ class SpeechManager
         std::vector<int> mVictory;
         std::map<int, Speaker> mSpeaker;
         int mIndex;
+
+        bool mFileIsEmpty;
+        std::map<int, std::vector<std::string>> mRecord; 
+
 
 };
 
