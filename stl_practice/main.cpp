@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-25 19:57:06
-# Last Modified: 2020-06-26 20:04:06
+# Last Modified: 2020-06-27 19:21:12
 #***********************************************/
 #include <iostream>
 #include "speechManager.h"
@@ -18,10 +18,12 @@ int main(int argc, char *argv[])
     
     while(true)
     {
+        system("clear");
         sm.showMenu();
 
         cout << "请输入你的选择:";
         cin >> choice;
+        cin.get();
 
         switch(choice)
         {

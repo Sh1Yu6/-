@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-25 19:51:38
-# Last Modified: 2020-06-26 20:10:56
+# Last Modified: 2020-06-27 19:22:25
 #***********************************************/
 #include "speechManager.h"
 #include "speaker.h"
@@ -90,7 +90,6 @@ void SpeechManager::createSpeaker()
 void SpeechManager::startSpeech()
 {
     srand(static_cast<unsigned int>(time(NULL)));
-    cin.get();
     speechDraw();
     speechContest();
     showScore();
@@ -261,6 +260,7 @@ void SpeechManager::saveRecord()
 
     cout << "记录已经保存" << endl;
     mFileIsEmpty = false;
+    waitInput();
 }
 
 void SpeechManager::loadRecord()
@@ -334,6 +334,7 @@ void SpeechManager::showRecord()
              << "\n季军: " << mRecord[index][4] << " 得分: " << mRecord[index][5]
              << endl;
     }
+    waitInput();
 }
 
 void SpeechManager::waitInput()
@@ -361,6 +362,7 @@ void SpeechManager::clearRecord()
         
         cout << "清空成功!" << endl;
     }
+    waitInput();
 
 
 }
