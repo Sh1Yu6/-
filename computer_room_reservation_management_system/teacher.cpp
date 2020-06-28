@@ -6,9 +6,8 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-27 19:53:56
-# Last Modified: 2020-06-27 19:55:08
+# Last Modified: 2020-06-28 21:11:00
 #***********************************************/
-#include <iostream>
 #include "teacher.h"
 using namespace std;
 Teacher::Teacher()
@@ -35,3 +34,12 @@ void Teacher::validOrder()
 
 }
 
+void Teacher::setId(int id)
+{
+    mTeacherId = id;
+}
+
+int Teacher::getId() const
+{
+    return mTeacherId;
+}

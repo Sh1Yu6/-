@@ -6,21 +6,27 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-27 19:27:59
-# Last Modified: 2020-06-27 20:46:25
+# Last Modified: 2020-06-28 22:41:29
 #***********************************************/
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "globalFile.h"
 #include "identity.h"
 #include "student.h"
 #include "teacher.h"
 #include "manager.h"
+#include "globalFile.h"
 using namespace std;
 
 void waitInput();
 
 void loginIn(const string fileName, const int type);
+
+void managerMenu(Identity*& manager);
+
+void studentMenu(Identity*& manager);
+
+void teacherMenu(Identity*& manager);
 
 int main(int argc, char *argv[])
 {
@@ -120,6 +126,7 @@ void loginIn(const string fileName, const int type)
             {
                 cout << "登录成功" << endl;
                 person = new Student(id, name, pwd);
+                //
                 return; 
             }
         }
@@ -136,6 +143,7 @@ void loginIn(const string fileName, const int type)
             {
                 cout << "登录成功" << endl;
                 person = new Teacher(id, name, pwd);
+                //
                 return; 
             }
         }
@@ -152,6 +160,7 @@ void loginIn(const string fileName, const int type)
             {
                 cout << "登录成功" << endl;
                 person = new Manager(name, pwd);
+                managerMenu(person);
                 return; 
             }
         }
@@ -161,3 +170,121 @@ void loginIn(const string fileName, const int type)
     cout << "登录失败!" << endl;
 }
 
+void managerMenu(Identity*& manager)
+{
+    while(true)
+    {
+        system("clear");
+        manager->operMenu();
+
+        Manager* man = static_cast<Manager*>(manager);
+
+        int select = 0;
+
+        cin >> select;
+
+        switch(select)
+        {
+            case 1:
+                man->addPerson();
+                waitInput();
+                break;
+            case 2:
+                man->showPerson();
+                waitInput();
+                break;
+            case 3:
+                man->showComputerRoom();
+                waitInput();
+                break;
+            case 4:
+                man->clearFile();
+                waitInput();
+                break;
+            case 0:
+                delete manager;
+                cout << "注销成功" << endl;
+                return;
+            default:
+                cout << "输入错误, 请重新输入!" << endl;
+                break;
+        }
+    }
+}
+
+void studentMenu(Identity*& manager)
+{
+    while(true)
+    {
+        system("clear");
+        manager->operMenu();
+
+        Teacher* stu = static_cast<Student*>(manager);
+
+        int select = 0;
+
+        cin >> select;
+
+        switch(select)
+        {
+            case 1:
+                waitInput();
+                break;
+            case 2:
+                waitInput();
+                break;
+            case 3:
+                waitInput();
+                break;
+            case 4:
+                waitInput();
+                break;
+            case 0:
+                delete manager;
+                cout << "注销成功" << endl;
+                return;
+            default:
+                cout << "输入错误, 请重新输入!" << endl;
+                break;
+        }
+    }
+}
+
+void teacherMenu(Identity*& manager)
+{
+    while(true)
+    {
+        system("clear");
+        manager->operMenu();
+
+        Teacher* tea = static_cast<Teacher*>(manager);
+
+        int select = 0;
+
+        cin >> select;
+
+        switch(select)
+        {
+            case 1:
+                waitInput();
+                break;
+            case 2:
+                waitInput();
+                break;
+            case 3:
+                waitInput();
+                break;
+            case 4:
+                waitInput();
+                break;
+            case 0:
+                delete manager;
+                cout << "注销成功" << endl;
+                return;
+            default:
+                cout << "输入错误, 请重新输入!" << endl;
+                break;
+        }
+    }
+
+}

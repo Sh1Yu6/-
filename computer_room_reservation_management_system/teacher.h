@@ -15,6 +15,10 @@ class Teacher: public Identity
         void showAllOrder();
 
         void validOrder();
+
+        void setId(int id);
+
+        int getId() const;
     private:
         int mTeacherId;
 };

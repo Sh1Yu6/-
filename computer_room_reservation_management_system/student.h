@@ -18,6 +18,10 @@ class Student: public Identity
 
         void cancelOrder();
 
+        void setId(int id);
+
+        int getId() const;
+
     private:
         int mStudentId;
 };

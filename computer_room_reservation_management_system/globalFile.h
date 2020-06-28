@@ -1,12 +1,13 @@
 #pragma once
+
 #include <string>
 
-std::string kAdminFile = "admin.txt";
+extern std::string kAdminFile;
 
-std::string kStudentFile = "student.txt";
+extern std::string kStudentFile;
 
-std::string kTeacherFile = "teacher.txt";
+extern std::string kTeacherFile;
 
-std::string kComputerFile = "computerRoom.txt";
+extern std::string kComputerFile;
 
-std::string kOrderFile = "order.txt";
+extern std::string kOrderFile;
