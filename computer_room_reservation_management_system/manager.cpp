@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-27 19:58:20
-# Last Modified: 2020-06-28 22:34:40
+# Last Modified: 2020-06-29 21:44:59
 #***********************************************/
 #include "manager.h"
 #include "computerRoom.h"
@@ -114,7 +114,7 @@ void Manager::showPerson()
     }
     else if(select == 2)
     {
-        cout << "所有学生信息如下:" << endl;
+        cout << "所有教师信息如下:" << endl;
         for_each(mTea.begin(), mTea.end(), printTeacher);
     }
     else

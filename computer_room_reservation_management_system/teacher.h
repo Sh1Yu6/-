@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include "orderFild.h"
 #include "identity.h"
 
 class Teacher: public Identity

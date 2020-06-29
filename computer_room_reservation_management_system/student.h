@@ -2,7 +2,14 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
+#include <cstring>
 #include "identity.h"
+#include "computerRoom.h"
+#include "globalFile.h"
+#include "orderFild.h"
+
 
 class Student: public Identity
 {
@@ -14,6 +21,8 @@ class Student: public Identity
 
         void applyOrder();
 
+        void showMyOrder();
+
         void showAllOrder();
 
         void cancelOrder();
@@ -24,4 +33,6 @@ class Student: public Identity
 
     private:
         int mStudentId;
+
+        std::vector<ComputerRoom> mCom;
 };

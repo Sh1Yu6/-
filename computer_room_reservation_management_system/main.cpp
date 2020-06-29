@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-27 19:27:59
-# Last Modified: 2020-06-28 22:41:29
+# Last Modified: 2020-06-29 21:25:39
 #***********************************************/
 #include <iostream>
 #include <fstream>
@@ -16,6 +16,7 @@
 #include "teacher.h"
 #include "manager.h"
 #include "globalFile.h"
+#include "orderFild.h"
 using namespace std;
 
 void waitInput();
@@ -126,7 +127,8 @@ void loginIn(const string fileName, const int type)
             {
                 cout << "登录成功" << endl;
                 person = new Student(id, name, pwd);
-                //
+
+                studentMenu(person);
                 return; 
             }
         }
@@ -143,7 +145,8 @@ void loginIn(const string fileName, const int type)
             {
                 cout << "登录成功" << endl;
                 person = new Teacher(id, name, pwd);
-                //
+
+                teacherMenu(person);
                 return; 
             }
         }
@@ -160,6 +163,7 @@ void loginIn(const string fileName, const int type)
             {
                 cout << "登录成功" << endl;
                 person = new Manager(name, pwd);
+
                 managerMenu(person);
                 return; 
             }
@@ -212,14 +216,14 @@ void managerMenu(Identity*& manager)
     }
 }
 
-void studentMenu(Identity*& manager)
+void studentMenu(Identity*& student)
 {
     while(true)
     {
         system("clear");
-        manager->operMenu();
+        student->operMenu();
 
-        Teacher* stu = static_cast<Student*>(manager);
+        Student* stu = static_cast<Student*>(student);
 
         int select = 0;
 
@@ -228,19 +232,23 @@ void studentMenu(Identity*& manager)
         switch(select)
         {
             case 1:
+                stu->applyOrder();
                 waitInput();
                 break;
             case 2:
+                stu->showMyOrder();
                 waitInput();
                 break;
             case 3:
+                stu->showAllOrder();
                 waitInput();
                 break;
             case 4:
+                stu->cancelOrder();
                 waitInput();
                 break;
             case 0:
-                delete manager;
+                delete student;
                 cout << "注销成功" << endl;
                 return;
             default:
@@ -250,14 +258,14 @@ void studentMenu(Identity*& manager)
     }
 }
 
-void teacherMenu(Identity*& manager)
+void teacherMenu(Identity*& teacher)
 {
     while(true)
     {
         system("clear");
-        manager->operMenu();
+        teacher->operMenu();
 
-        Teacher* tea = static_cast<Teacher*>(manager);
+        Teacher* tea = static_cast<Teacher*>(teacher);
 
         int select = 0;
 
@@ -266,19 +274,15 @@ void teacherMenu(Identity*& manager)
         switch(select)
         {
             case 1:
+                tea->showAllOrder();
                 waitInput();
                 break;
             case 2:
-                waitInput();
-                break;
-            case 3:
-                waitInput();
-                break;
-            case 4:
+                tea->validOrder();
                 waitInput();
                 break;
             case 0:
-                delete manager;
+                delete teacher;
                 cout << "注销成功" << endl;
                 return;
             default:
