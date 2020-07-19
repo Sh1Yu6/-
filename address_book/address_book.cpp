@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-06 21:13:37
-# Last Modified: 2020-06-23 21:41:58
+# Last Modified: 2020-07-18 15:46:03
 #***********************************************/
 #include <iostream>
 #include <string>
@@ -214,7 +214,6 @@ void changeContacts(AddressBook& theAddrBook)
             cin >> loopIndex->mPhoneNumber;
 
             cout << "Please enter address: ";
-            getline(cin, loopIndex->mAddress);
             getline(cin, loopIndex->mAddress);
 
             return ;

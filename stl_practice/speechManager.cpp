@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-25 19:51:38
-# Last Modified: 2020-06-27 19:22:25
+# Last Modified: 2020-07-18 15:55:09
 #***********************************************/
 #include "speechManager.h"
 #include "speaker.h"
@@ -340,6 +340,7 @@ void SpeechManager::showRecord()
 void SpeechManager::waitInput()
 {
     cout << "请按回车键继续......." << endl;
+    cin.ignore();
     cin.get();
 }
 
