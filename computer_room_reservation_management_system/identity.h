@@ -12,6 +12,7 @@ class Identity
 
         void setPwd(std::string pwd);
         std::string getPwd() const;
+
     protected:
         std::string mName;
         std::string mPwd;

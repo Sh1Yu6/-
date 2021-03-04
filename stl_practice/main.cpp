@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-25 19:57:06
-# Last Modified: 2020-07-18 15:47:18
+# Last Modified: 2020-11-16 17:21:08
 #***********************************************/
 #include <iostream>
 #include "speechManager.h"
@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
         cin >> choice;
         cin.get();
 
+        
         switch(choice)
         {
             case 1:
