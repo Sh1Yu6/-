@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-27 19:27:59
-# Last Modified: 2020-11-17 11:12:50
+# Last Modified: 2021-03-04 17:25:42
 #***********************************************/
 #include <iostream>
 #include <fstream>
@@ -78,7 +78,8 @@ void waitInput()
 {
     cout << "请按回车键继续..........";
     cin.ignore();
-    cin.get();
+    cin.ignore();
+    //cin.get();
 }
 
 void loginIn(const string fileName, const int type)
