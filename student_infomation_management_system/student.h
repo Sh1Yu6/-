@@ -44,7 +44,6 @@ namespace Sh1Yu6{
             int getStuAge() const;
 
 
-
         protected:
             std::string mStuName;
             std::string mStuSchool;

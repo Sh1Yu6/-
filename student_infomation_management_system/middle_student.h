@@ -17,7 +17,16 @@ namespace Sh1Yu6{
     class MiddleStudent: public PrimaryStudent{
         public:
             MiddleStudent() = default;
-            MiddleStudent(int geographyScore,
+            MiddleStudent(std::string name, 
+                          std::string school,
+                          std::string cls,
+                          std::string sex,
+                          int id, 
+                          int age,
+                          int chineseScore,
+                          int englisgScore,
+                          int mathScore,
+                          int geographyScore,
                           int historyScore,
                           std::string addr);
             ~MiddleStudent() = default;
@@ -30,6 +39,7 @@ namespace Sh1Yu6{
 
             void setAddress(std::string address);
             std::string getAddress() const;
+
         protected:
             int mGeographyScore;
             int mHistoryScore;

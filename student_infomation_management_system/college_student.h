@@ -16,7 +16,13 @@ namespace Sh1Yu6{
     class CollegeStudent: public Student{
         public:
             CollegeStudent() = default;
-            CollegeStudent(std::string profess,
+            CollegeStudent(std::string name, 
+                           std::string school,
+                           std::string cls,
+                           std::string sex,
+                           int id, 
+                           int age,
+                           std::string profess,
                            std::string addr,
                            std::string phoneNum);
             ~CollegeStudent() = default;

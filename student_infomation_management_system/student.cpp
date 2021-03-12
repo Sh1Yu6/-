@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 09:47:26
-# Last Modified: 2021-03-12 10:31:13
+# Last Modified: 2021-03-12 15:29:50
 #***********************************************/
 #include <iostream>
 #include "student.h"
@@ -18,12 +18,13 @@ namespace Sh1Yu6{
                      std::string cls,
                      std::string sex,
                      int id, 
-                     int age): mStuName{ name }, 
-                               mStuSchool{ school },
-                               mStuClass{ cls },
-                               mStuSex{ sex },
-                               mStuId{ id },
-                               mStuAge{ age }{
+                     int age)
+            : mStuName{ name }, 
+              mStuSchool{ school },
+              mStuClass{ cls },
+              mStuSex{ sex },
+              mStuId{ id },
+              mStuAge{ age }{
 
     }
 

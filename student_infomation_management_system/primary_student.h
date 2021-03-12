@@ -11,13 +11,22 @@
 
 #ifndef __PRIMARY_STUDENT_H_
 #define __PRIMARY_STUDENT_H_
+#include <iostream>
 #include "student.h"
 namespace Sh1Yu6{
     
     class PrimaryStudent: public Student{
+        friend std::istream& operator>>(std::istream& in, PrimaryStudent& stu);
+        friend std::ostream& operator<<(std::ostream& out, PrimaryStudent& stu);
         public:
             PrimaryStudent() = default;
-            PrimaryStudent(int chineseScore,
+            PrimaryStudent(std::string name, 
+                           std::string school,
+                           std::string cls,
+                           std::string sex,
+                           int id, 
+                           int age,
+                           int chineseScore,
                            int englisgScore,
                            int mathScore);
             ~PrimaryStudent() = default;
