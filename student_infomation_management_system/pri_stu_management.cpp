@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 18:45:48
-# Last Modified: 2021-03-13 17:10:08
+# Last Modified: 2021-03-13 19:43:44
 #***********************************************/
 #include <iostream>
 #include <fstream>
@@ -226,6 +226,10 @@ namespace Sh1Yu6{
         cout << "Successfully deleted!" << endl;
     }
 
+    void PriStuManagement::statisticsTotal(){
+        cout << "The total number of students is " << stus.size() << endl;
+    }
+
     void PriStuManagement::statisticsByGender(){
         int countM = 0;
         int countW = 0;
@@ -258,21 +262,6 @@ namespace Sh1Yu6{
         cout << "There are " << count << " " << age << "-year-old students" << endl;
     }
 
-    void PriStuManagement::statistics(int select){
-        switch(select){
-            case 1:
-                cout << "The total number of students is " << stus.size() << endl;
-                break;
-            case 2:
-                statisticsByGender();
-                break;
-            case 3:
-                statisticsByAge();
-                break;
-            default:
-                break;
-        }
-    }
 
     void PriStuManagement::save(){
         ofstream ofs{ primaryStuFile };
@@ -306,7 +295,6 @@ namespace Sh1Yu6{
              << setw(10) << "English" 
              << setw(10) << "Math" 
              << endl;
-
     }
 
 } // Sh1Yu6

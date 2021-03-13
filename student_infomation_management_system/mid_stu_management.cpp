@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 18:48:11
-# Last Modified: 2021-03-13 17:10:58
+# Last Modified: 2021-03-13 19:35:00
 #***********************************************/
 #include <iostream>
 #include <fstream>
@@ -279,6 +279,10 @@ namespace Sh1Yu6{
 
     }
 
+    void MidStuManagement::statisticsTotal(){
+        cout << "The total number of students is " << stus.size() << endl;
+    }
+
     void MidStuManagement::statisticsByGender(){
         int countM = 0;
         int countW = 0;
@@ -309,22 +313,6 @@ namespace Sh1Yu6{
             }
         }
         cout << "There are " << count << " " << age << "-year-old students" << endl;
-    }
-
-    void MidStuManagement::statistics(int select){
-        switch(select){
-            case 1:
-                cout << "The total number of students is " << stus.size() << endl;
-                break;
-            case 2:
-                statisticsByGender();
-                break;
-            case 3:
-                statisticsByAge();
-                break;
-            default:
-                break;
-        }
     }
 
     void MidStuManagement::save(){

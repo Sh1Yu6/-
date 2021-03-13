@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 10:46:10
-# Last Modified: 2021-03-13 10:06:56
+# Last Modified: 2021-03-13 17:21:38
 #***********************************************/
 #include <iostream>
 #include <iomanip>
@@ -78,7 +78,7 @@ namespace Sh1Yu6{
             << setw(10) << stu.mGeographyScore 
             << setw(10) << stu.mHistoryScore 
             << endl;
-
+        return out;
     }
 } // Sh1Yu6
 

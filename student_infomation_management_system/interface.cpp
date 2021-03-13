@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 11:38:46
-# Last Modified: 2021-03-13 17:04:35
+# Last Modified: 2021-03-13 19:17:43
 #***********************************************/
 #include <iostream>
 #include <string>
@@ -46,7 +46,6 @@ namespace Sh1Yu6{
                     waitInput();
                     break;
             }
-
             if(stuManage != nullptr){
                 delete stuManage;
             }
@@ -185,7 +184,7 @@ namespace Sh1Yu6{
 
     }
 
-    int Interface::editMenu(){
+    void Interface::editMenu(){
         system("clear");
         cout << "--------Student Information Management System--------" << endl;
         cout << "---------------Edit student information--------------" << endl;
@@ -193,7 +192,7 @@ namespace Sh1Yu6{
              << "the student whose information you want to modify:";
     }
 
-    int Interface::deleteMenu(){
+    void Interface::deleteMenu(){
         system("clear");
         cout << "--------Student Information Management System--------" << endl;
         cout << "-------------Delete student information--------------" << endl;

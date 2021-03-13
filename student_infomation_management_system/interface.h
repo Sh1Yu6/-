@@ -17,18 +17,25 @@ namespace Sh1Yu6{
         public:
 
         void mainFace();
+
         void selectFace(StuManagement*& stuManage);
 
         private:
 
         int mainMenu();
+
         int selectMenu();
 
         void addMenu();
+
         int queryMneu();
+
         void displayMenu();
-        int editMenu();
-        int deleteMenu();
+
+        void editMenu();
+
+        void deleteMenu();
+
         int statisticsMenu();
 
         void waitInput();

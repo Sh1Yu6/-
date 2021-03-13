@@ -17,6 +17,7 @@ namespace Sh1Yu6{
 
     class Student{
         public:
+
             void setStuName( std::string name );
             std::string getStuName() const;
 
