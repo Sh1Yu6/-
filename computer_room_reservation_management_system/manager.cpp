@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2020-06-27 19:58:20
-# Last Modified: 2020-11-17 11:00:39
+# Last Modified: 2021-03-13 17:02:52
 #***********************************************/
 #include "manager.h"
 #include "computerRoom.h"
@@ -49,6 +49,7 @@ void Manager::operMenu()
     cout << "0) 注销登录 " << endl;
     cout << "请输入您的选择:";
 }
+
 
 void Manager::addPerson()
 {

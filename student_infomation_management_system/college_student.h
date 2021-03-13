@@ -14,27 +14,16 @@
 namespace Sh1Yu6{
     
     class CollegeStudent: public Student{
+        friend std::istream& operator>>(std::istream& in, CollegeStudent& stu);
+        friend std::ostream& operator<<(std::ostream& out, CollegeStudent& stu);
         public:
-            CollegeStudent() = default;
-            CollegeStudent(std::string name, 
-                           std::string school,
-                           std::string cls,
-                           std::string sex,
-                           int id, 
-                           int age,
-                           std::string profess,
-                           std::string addr,
-                           std::string phoneNum);
-            ~CollegeStudent() = default;
-
-            
             void setProfessional(std::string profess);
             std::string getProfessional() const;
 
             void setAddress(std::string addr);
             std::string getAddress() const;
 
-            void setPhoneNum(std::string phoneNum);
+            bool setPhoneNum(std::string phoneNum);
             std::string getPhoneNum() const;
         protected:
             std::string mProfessional;

@@ -19,24 +19,13 @@ namespace Sh1Yu6{
         friend std::istream& operator>>(std::istream& in, PrimaryStudent& stu);
         friend std::ostream& operator<<(std::ostream& out, PrimaryStudent& stu);
         public:
-            PrimaryStudent() = default;
-            PrimaryStudent(std::string name, 
-                           std::string school,
-                           std::string cls,
-                           std::string sex,
-                           int id, 
-                           int age,
-                           int chineseScore,
-                           int englisgScore,
-                           int mathScore);
-            ~PrimaryStudent() = default;
-            void setChineseScore( int score );
+            bool setChineseScore( int score );
             int getChineseScore() const;
 
-            void setEnglishScore( int score );
+            bool setEnglishScore( int score );
             int getEnglishScore() const;
 
-            void setMathScore( int score );
+            bool setMathScore( int score );
             int getMathScore();
 
         protected:

@@ -15,26 +15,13 @@
 namespace Sh1Yu6{
     
     class MiddleStudent: public PrimaryStudent{
+        friend std::istream& operator>>(std::istream& in, MiddleStudent& stu);
+        friend std::ostream& operator<<(std::ostream& out, MiddleStudent& stu);
         public:
-            MiddleStudent() = default;
-            MiddleStudent(std::string name, 
-                          std::string school,
-                          std::string cls,
-                          std::string sex,
-                          int id, 
-                          int age,
-                          int chineseScore,
-                          int englisgScore,
-                          int mathScore,
-                          int geographyScore,
-                          int historyScore,
-                          std::string addr);
-            ~MiddleStudent() = default;
-
-            void setGeographyScore(int score);
+            bool setGeographyScore(int score);
             int getGeographyScore() const;
 
-            void setHistoryScore(int score);
+            bool setHistoryScore(int score);
             int getHisrotyScore() const;
 
             void setAddress(std::string address);

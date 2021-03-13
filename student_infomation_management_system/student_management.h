@@ -12,6 +12,7 @@
 #ifndef __STUDENT_MANAGEMENT_H_
 #define __STUDENT_MANAGEMENT_H_
 
+#include <string>
 namespace Sh1Yu6{
 
     class StuManagement{
@@ -19,11 +20,13 @@ namespace Sh1Yu6{
             //StuManagement() = default;
             virtual ~StuManagement() = default;
             virtual void add() = 0;
-            virtual void query() = 0;
+            void query(int select);
+            virtual bool queryById(int id) = 0;
+            virtual bool queryByName(std::string str) = 0;
             virtual void display() = 0;
             virtual void edit() = 0;
             virtual void del() = 0;
-            virtual void statistics() = 0;
+            virtual void statistics(int select) = 0;
             virtual void save() = 0;
             virtual void read() = 0;
     };

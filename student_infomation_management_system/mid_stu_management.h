@@ -20,15 +20,19 @@ namespace Sh1Yu6{
     class MidStuManagement: public StuManagement{
         public:
             void add() override;
-            void query() override;
+            bool queryById(int id) override;
+            bool queryByName(std::string str) override;
             void display() override;
             void edit() override;
             void del() override;
-            void statistics() override;
+            void statistics(int select) override;
             void save() override;
             void read() override;
         private:
             std::unordered_map<int, MiddleStudent> stus;
+            void displayTitle();
+            void statisticsByGender();
+            void statisticsByAge();
 
     };
 } // Sh1Yu6

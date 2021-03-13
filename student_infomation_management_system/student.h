@@ -17,14 +17,6 @@ namespace Sh1Yu6{
 
     class Student{
         public:
-            Student() = default;
-            Student(std::string name, 
-                    std::string school,
-                    std::string cls,
-                    std::string sex,
-                    int id, 
-                    int age);
-            ~Student() = default;
             void setStuName( std::string name );
             std::string getStuName() const;
 
@@ -34,13 +26,13 @@ namespace Sh1Yu6{
             void setStuClass( std::string cls );
             std::string getStuClass() const;
 
-            void setStuSex( std::string sex );
+            bool setStuSex( std::string sex );
             std::string getStuSex() const;
 
             void setStuId( int id );
             int getStuId() const;
 
-            void setStuAge( int age );
+            bool setStuAge( int age );
             int getStuAge() const;
 
 

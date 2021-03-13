@@ -6,28 +6,13 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 09:47:26
-# Last Modified: 2021-03-12 15:29:50
+# Last Modified: 2021-03-13 09:27:24
 #***********************************************/
 #include <iostream>
 #include "student.h"
 using namespace std;
 
 namespace Sh1Yu6{
-    Student::Student(std::string name, 
-                     std::string school,
-                     std::string cls,
-                     std::string sex,
-                     int id, 
-                     int age)
-            : mStuName{ name }, 
-              mStuSchool{ school },
-              mStuClass{ cls },
-              mStuSex{ sex },
-              mStuId{ id },
-              mStuAge{ age }{
-
-    }
-
     void Student::setStuName( std::string name ){
         mStuName = name;
     }
@@ -49,8 +34,13 @@ namespace Sh1Yu6{
         return mStuClass;
     }
 
-    void Student::setStuSex( std::string sex ){
+    bool Student::setStuSex( std::string sex ){
+        if(sex != "man" && sex != "woman"){
+            cout << "Please enter man or woman!" << endl;
+            return false;
+        }
         mStuSex = sex;
+        return true;
     }
     std::string Student::getStuSex() const{
         return mStuSex;
@@ -63,8 +53,13 @@ namespace Sh1Yu6{
         return mStuId;
     }
 
-    void Student::setStuAge( int age ){
+    bool Student::setStuAge( int age ){
+        if(age < 0 || age > 120){
+            cout << "Please enter a scale of 0-120!" << endl;
+            return false;
+        }
         mStuAge = age;
+        return true;
     }
     int Student::getStuAge() const{
         return mStuAge;

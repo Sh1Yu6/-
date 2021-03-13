@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 19:11:14
-# Last Modified: 2021-03-12 20:51:32
+# Last Modified: 2021-03-13 17:01:32
 #***********************************************/
 #include <iostream>
 #include <fstream>
@@ -15,27 +15,36 @@
 #include <unordered_map>
 using namespace std;
 
-struct A{
-    int a;
-    int b;
-    string c;
-    string d;
-    int e;
+class A{
+    public:
+    void func(){
+       func2();
+    }
+    virtual void func2() = 0;
+
+};
+
+class B: public A{
+
+    public:
+    int a = 10;
+    void func2() override{
+        cout << "B" << endl;
+        cout << a << endl;
+    }
+};
+
+class C: public A{
+
+    public:
+    int a = 100;
+    void func2() override{
+        cout << "C" << endl;
+        cout << a << endl;
+    }
 };
 int main(int argc, char *argv[])
 {
-    vector<A> record;
-
-    unordered_map<int, string> a;
-    a.insert(pair<int, string>(100, "aksdj1"));
-    a.insert(pair<int, string>(100, "aksdj2"));
-    a.insert(pair<int, string>(101, "aksdj3"));
-    a.insert(pair<int, string>(100, "aksdj4"));
-    cout << a.count(100) << endl;
-
-    for(auto i: a){
-        cout << i.first << " " << i.second << endl;
-    }
     return 0;
 }
 

@@ -19,15 +19,6 @@ namespace Sh1Yu6{
         void mainFace();
         void selectFace(StuManagement*& stuManage);
 
-        //void addFunc();
-        //void queryFunc();
-        //void displayFunc();
-        //void editFunc();
-        //void deleteFunc();
-        //void statisticsFunc();
-        //void saveFunc();
-        //void readFunc();
-
         private:
 
         int mainMenu();

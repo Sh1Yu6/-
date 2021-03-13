@@ -6,47 +6,46 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 10:33:17
-# Last Modified: 2021-03-12 22:24:23
+# Last Modified: 2021-03-13 09:28:01
 #***********************************************/
 #include <iostream>
+#include <iomanip>
 #include "primary_student.h"
 using namespace std;
 
 namespace Sh1Yu6{
     
-    PrimaryStudent::PrimaryStudent(std::string name, 
-                                   std::string school,
-                                   std::string cls,
-                                   std::string sex,
-                                   int id, 
-                                   int age,
-                                   int chineseScore,
-                                   int englisgScore,
-                                   int mathScore)
-                    : Student(name, school, cls, sex, id, age),
-                      mChineseScore{ chineseScore },
-                      mEnglishScore{ englisgScore },
-                      mMathScore{ mathScore }{
-    }
-
-    
-
-    void PrimaryStudent::setChineseScore( int score ){
+    bool PrimaryStudent::setChineseScore( int score ){
+        if(score < 0 || score > 100){
+            cout << "Please enter a scale of 0-100!" << endl;
+            return false;
+        }
         mChineseScore = score;
+        return true;
     }
     int PrimaryStudent::getChineseScore() const{
         return mChineseScore;
     }
 
-    void PrimaryStudent::setEnglishScore( int score ){
+    bool PrimaryStudent::setEnglishScore( int score ){
+        if(score < 0 || score > 100){
+            cout << "Please enter a scale of 0-100!" << endl;
+            return false;
+        }
         mEnglishScore = score;
+        return true;
     }
     int PrimaryStudent::getEnglishScore() const{
         return mEnglishScore;
     }
 
-    void PrimaryStudent::setMathScore( int score ){
+    bool PrimaryStudent::setMathScore( int score ){
+        if(score < 0 || score > 100){
+            cout << "Please enter a scale of 0-100!" << endl;
+            return false;
+        }
         mMathScore = score;
+        return true;
     }
     int PrimaryStudent::getMathScore(){
         return mMathScore;
@@ -66,15 +65,16 @@ namespace Sh1Yu6{
     }
 
     std::ostream& operator<<(std::ostream& out, PrimaryStudent& stu){
-        out << stu.mStuId << "\t"
-            << stu.mStuName << "\t"
-            << stu.mStuSchool << "\t"
-            << stu.mStuClass << "\t"
-            << stu.mStuSex << "\t" 
-            << stu.mStuAge << "\t"
-            << stu.mChineseScore << "\t"
-            << stu.mEnglishScore << "\t" 
-            << stu.mMathScore << endl;
+        out << setw(10) << stu.mStuId
+            << setw(10) << stu.mStuName
+            << setw(10) << stu.mStuSchool
+            << setw(10) << stu.mStuClass
+            << setw(10) << stu.mStuSex 
+            << setw(10) << stu.mStuAge
+            << setw(10) << stu.mChineseScore
+            << setw(10) << stu.mEnglishScore
+            << setw(10) << stu.mMathScore 
+            << endl;
         return out;
     }
 
