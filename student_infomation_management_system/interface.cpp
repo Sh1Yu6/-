@@ -6,10 +6,11 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-12 11:38:46
-# Last Modified: 2021-03-13 19:17:43
+# Last Modified: 2021-05-24 12:12:33
 #***********************************************/
 #include <iostream>
 #include <string>
+#include <limits>
 #include "interface.h"
 #include "pri_stu_management.h"
 #include "mid_stu_management.h"
@@ -135,6 +136,11 @@ namespace Sh1Yu6{
         cout << "Please enter your choice (0-3):";
         int select = 0;
         cin >> select;
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+            return 10;
+        }
         return select;
     }
 
