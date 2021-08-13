@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-07 19:56:18
-# Last Modified: 2021-03-07 20:24:29
+# Last Modified: 2021-05-03 16:21:54
 #***********************************************/
 #include <iostream>
 #include <sys/socket.h>
@@ -14,6 +14,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <cstring>
+#include <string>
 //#include <sys/types.h>
 using namespace std;
 
@@ -41,10 +42,18 @@ int main(int argc, char *argv[])
         exit(-1);
     }
 
-    char sendBuf[kMessageLen] = {"hello, world!"};
+    char sendBuf[kMessageLen];
     char recvBuf[kMessageLen];
     while(true){
-        ret = send(socketFd, sendBuf, strlen(sendBuf), 0);
+        memset(recvBuf, 0, kMessageLen);
+        cout << "input: ";
+        string str;
+        cin >> str;
+        for(int i = 0; i < (int)str.size(); ++i){
+            str[i] = str[i] ^ 0x10;
+        }
+
+        ret = send(socketFd, str.c_str(), str.size(), 0);
         if(ret <= 0){
             cout << "Failed to send data!" << endl;
             break;
@@ -52,10 +61,10 @@ int main(int argc, char *argv[])
         if(strcmp(sendBuf, "quit") == 0){
             break;
         }
-        ret = recv(socketFd, recvBuf, kMessageLen-1, 0);
-        recvBuf[ret] = '\0';
-        cout << recvBuf << endl;
-        usleep(2000000);
+        //ret = recv(socketFd, recvBuf, kMessageLen-1, 0);
+        //recvBuf[ret] = '\0';
+        //cout << recvBuf << endl;
+        //usleep(2000000);
     }
     close(socketFd);
 

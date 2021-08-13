@@ -6,11 +6,12 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-07 21:59:02
-# Last Modified: 2021-03-07 22:54:20
+# Last Modified: 2021-05-03 16:18:42
 #***********************************************/
 #include <iostream>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <sys/stat.h>
 #include <unistd.h>
 #include <cstring>
 #include <signal.h>
@@ -24,13 +25,12 @@ namespace Sh1Yu6{
     constexpr int kMessageLen = 1024;
 
     Server::Server(){
-        daemonize();
+        //daemonize();
         init();
     }
 
 
     Server::~Server(){
-        cout << "close" << endl;
         close(sockFd);
     }
 
@@ -70,14 +70,20 @@ namespace Sh1Yu6{
                                   &clientAddrLen);
             char recvBuf[kMessageLen] = {0};
             while(true){
+                memset(recvBuf, 0, kMessageLen);
                 int ret = recv(acceptFd, recvBuf, kMessageLen, 0);
                 if(ret == 0){
                     cout << "break;" << endl;
                     break;
                 }
                 cout << "recv: " << recvBuf << endl;
-                send(acceptFd, recvBuf, strlen(recvBuf), 0);
+                for(int i = 0; i < ret; ++i){
+                    cout << (char)(recvBuf[i] ^ 0x10);
+                }
+                cout << endl;
+                //send(acceptFd, recvBuf, strlen(recvBuf), 0);
             }
+            close(acceptFd);
         }
     }
 
@@ -99,6 +105,8 @@ namespace Sh1Yu6{
         }
 
         setsid();
+        
+        umask(0000);
 
         if( chdir("/") < 0 ){
             cout << "can't change dir!" << endl;
@@ -106,6 +114,7 @@ namespace Sh1Yu6{
         }
 
         int fd = open("/dev/null", O_RDWR);
+
         dup2(fd, STDIN_FILENO);
         dup2(fd, STDOUT_FILENO);
         dup2(fd, STDERR_FILENO);

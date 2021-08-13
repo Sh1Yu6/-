@@ -6,7 +6,7 @@
 #        Author: Sh1Yu6
 #   Description: ---
 #        Create: 2021-03-07 17:24:51
-# Last Modified: 2021-03-07 20:27:14
+# Last Modified: 2021-08-06 10:29:16
 #***********************************************/
 #include <iostream>
 #include <sys/socket.h>
@@ -80,10 +80,6 @@ int main(int argc, char *argv[])
                 cout << "break;" << endl;
                 break;
             }
-            auto clientAddr = inet_ntoa(client.sin_addr);
-            auto clientPort = ntohs(client.sin_port);
-            cout << "client address: " << clientAddr
-                 << "\tclient port: " << clientPort << endl;
             cout << "recv: " << recvBuf << endl;
             send(acceptFD, recvBuf, kMessageLen, 0);
         }
